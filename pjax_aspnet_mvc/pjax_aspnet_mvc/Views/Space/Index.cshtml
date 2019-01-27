@@ -1,0 +1,56 @@
+﻿
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>个人空间</title>
+	<style>
+		.panel {
+			width: 980px;
+			margin: 0 auto;
+			box-sizing: border-box;
+			border: 1px solid skyblue;
+			box-shadow: 2px 2px 6px #ccc;
+		}
+
+		#pjax-container {
+			width: 980px;
+			margin: 20px auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="panel">
+		<button onclick="getServiceTime()">获取服务器时间</button>
+		<a href="?action=time" data-pjax>获取服务器时间2-带参?action=time</a>
+	</div>
+	<div id="pjax-container"></div>
+	<script src="~/js/jquery-1.11.2.min.js"></script>
+	<script src="~/js/jquery.pjax.js"></script>
+	<script>
+		if ($.support.pjax) {
+			$(document).on('click', 'a[data-pjax]', function (event) {
+				console.log(this);
+				// 若选择器加上 button  eg:a[data-pjax],button
+				// error: Uncaught $.fn.pjax or $.pjax.click requires an anchor element
+				// 看来 $.pjax.click() 只能用 a标签
+				$.pjax.click(event, { /*url: '?action=time',*/ container: '#pjax-container', type: 'GET' });
+			})
+		}
+
+		function getServiceTime() {
+			// 用这种方法，就可以不用 a标签
+			$.pjax({
+				url: '', // 默认请求当前url，即 /Space/Index
+				container: '#pjax-container',
+				type: 'POST'
+			});
+		}
+	</script>
+</body>
+</html>

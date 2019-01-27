@@ -1,0 +1,31 @@
+﻿
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>.NET</title>
+	<link href="~/css/main.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="header">
+		<ul class="nav-list" data-pjax>
+			<li class="nav-list-item"><a href="/">首页</a></li>
+			<li class="nav-list-item active"><a href="/Home/Net">.NET</a></li>
+			<li class="nav-list-item"><a href="/Home/Php">PHP</a></li>
+			<li class="nav-list-item"><a href="/Home/About">About</a></li>
+		</ul>
+	</div>
+	<div id="loading">加载ing...</div>
+	<div id="pjax-container">
+		<div id="content"><h4>.NET内容</h4></div>
+	</div>
+	<script src="~/js/jquery-1.11.2.min.js"></script>
+	<script src="~/js/jquery.pjax.js"></script>
+	<script src="~/js/main.js"></script>
+</body>
+</html>

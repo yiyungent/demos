@@ -1,0 +1,45 @@
+﻿* { margin: 0; padding: 0;}
+ul { list-style-type: none;}
+a { text-decoration: none; color: #808080;}
+body { font: 12px "Microsoft YaHei";}
+.header {
+	width: 980px;
+	margin: 0 auto;
+}
+.nav-list {
+	overflow: hidden;
+	background-color: lightskyblue;
+}
+.nav-list-item {
+	float: left;
+}
+.nav-list-item a {
+	display: inline-block;
+	width: 40px;
+	height: 30px;
+	padding: 0 4px;
+	line-height: 30px;
+	font-size: 14px;
+	text-align: center;
+	color: #fff;
+}
+.nav-list-item.active {
+	background-color: aqua;
+}
+.nav-list-item a:hover {
+	background-color: aquamarine;
+}
+#loading {
+	display: none;
+	width: 980px;
+	margin: 0 auto;
+	font-size: 18px;
+	color: #ff6a00;
+}
+#pjax-container {
+	width: 980px;
+	height: 400px;
+	margin: 20px auto;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+}
