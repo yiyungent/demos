@@ -22,7 +22,10 @@
 	</div>
 	<div id="loading">加载ing...</div>
 	<div id="pjax-container">
-		<div id="content"><h4>首页内容</h4></div>
+		@*<div id="content"><h4>首页内容</h4></div>*@
+		@{Html.RenderPartial("_IndexContent");}
+
+		@* 除了使用部分视图外，当然也可以选择整个页面不变的是Layout，然后每个action套此Layout,发现是pjax请求时，则让Layout=null，不使用，只有非pjax请求才Layout=_Layout.cshtml*@
 	</div>
 	<script src="~/js/jquery-1.11.2.min.js"></script>
 	<script src="~/js/jquery.pjax.js"></script>

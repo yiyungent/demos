@@ -1,0 +1,19 @@
+﻿
+@{
+	#region 2.在视图中做逻辑判断，如果是pjax请求，则Layout=null
+	// 2.在视图中做逻辑判断，如果是pjax请求，则Layout=null
+	//if (!string.IsNullOrEmpty(Request.Headers["X-PJAX"]) && Convert.ToBoolean(Request.Headers["X-PJAX"]))
+	//{
+	//	Layout = null;
+	//}
+	//else
+	//{
+	//	Layout = "~/Views/Shared/_LayoutGoods.cshtml";
+	//}
+	#endregion
+
+	// 3.
+	Layout = "~/Views/Shared/_LayoutGoods.cshtml";
+}
+
+<div id="content"><h4>Cat内容</h4></div>

@@ -1,0 +1,45 @@
+﻿@{ 
+	// 3.发现 Index.cshtml, Cat.cshtml, Dog.cshtml 均需要此段相同判断代码，
+	// 其实也可以指定 Layout = "~/Views/Shared/_LayoutGoods.cshtml";
+	// 再在 _LayoutGoods 中做pjax判断,如果是pjax,则 只返回 @RenderBody()
+	if (!string.IsNullOrEmpty(Request.Headers["X-PJAX"]) && Convert.ToBoolean(Request.Headers["X-PJAX"]))
+	{
+		// (3)发现单调用 RenderBody() 是无法输出内容的，模板中是所以有效，是因为@符
+		Response.Write(RenderBody().ToHtmlString());
+		//(1)Response.End(); // 不能用此方法，因为它并不会终止程序运行，当执行完它后，仍然会向下，于是出现再次呼叫 RenderBody();
+		// (2)但是也不能单用return; 这样会导致 无返回数据，于是pjax判定为无效，于是发起二次同步请求，于是刷新变发生了
+		//Response.End();
+		// 退出
+		return;
+
+		// 总结：发现是pjax请求，则只输出RenderBody()内容，即(使用模板的action对应的视图)变化的内容,然后退出，防止二次呼叫RenderBody()
+		// 此过程可通过分析 反编译 .cshtml编译生成的dll发现，没有return 和 有 return的区别在Execute()方法
+	}
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+	<link href="~/css/main.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="header">
+		<ul class="nav-list" data-pjax>
+			@* 由于此导航头放入了模板，导致采用直接访问时 active均无，可使用js根据当前url动态添加 *@
+			<li class="nav-list-item"><a href="/Goods">首页</a></li>
+			<li class="nav-list-item"><a href="/Goods/Cat">Cat</a></li>
+			<li class="nav-list-item"><a href="/Goods/Dog">Dog</a></li>
+		</ul>
+	</div>
+	<div id="loading">加载ing...</div>
+	<div id="pjax-container">
+		@RenderBody()
+	</div>
+	<div>.cshtml编译生成的dll地址 @this.GetType().Assembly.Location</div>
+	<script src="~/js/jquery-1.11.2.min.js"></script>
+	<script src="~/js/jquery.pjax.js"></script>
+	<script src="~/js/goods.js"></script>
+</body>
+</html>

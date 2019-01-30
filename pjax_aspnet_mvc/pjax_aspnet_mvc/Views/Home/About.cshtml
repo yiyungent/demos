@@ -22,7 +22,8 @@
 	</div>
 	<div id="loading">加载ing...</div>
 	<div id="pjax-container">
-		<div id="content"><h4>About内容</h4></div>
+		@*<div id="content"><h4>About内容</h4></div>*@
+		@{Html.RenderPartial("_AboutContent");}
 	</div>
 	<script src="~/js/jquery-1.11.2.min.js"></script>
 	<script src="~/js/jquery.pjax.js"></script>

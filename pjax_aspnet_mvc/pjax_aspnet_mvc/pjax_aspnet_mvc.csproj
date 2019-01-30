@@ -92,6 +92,7 @@
     <Content Include="css\main.css" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.11.2.intellisense.js" />
+    <Content Include="js\goods.js" />
     <Content Include="js\jquery-1.11.2.min.js" />
     <Content Include="js\jquery.pjax.js" />
     <Content Include="js\main.js" />
@@ -106,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\GoodsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SpaceController.cs" />
     <Compile Include="Global.asax.cs">
@@ -118,6 +120,14 @@
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.11.2.min.map" />
+    <Content Include="Views\Home\_IndexContent.cshtml" />
+    <Content Include="Views\Home\_NetContent.cshtml" />
+    <Content Include="Views\Home\_PhpContent.cshtml" />
+    <Content Include="Views\Home\_AboutContent.cshtml" />
+    <Content Include="Views\Shared\_LayoutGoods.cshtml" />
+    <Content Include="Views\Goods\Index.cshtml" />
+    <Content Include="Views\Goods\Cat.cshtml" />
+    <Content Include="Views\Goods\Dog.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
