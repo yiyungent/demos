@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<script src="Scripts/jquery-1.6.4.js"></script>
+	<script src="Scripts/jquery.signalR-2.3.0.js"></script>
+	<script src="signalr/hubs"></script>
+	<script type="text/javascript">
+		$(function () {
+
+			// 一加载先设置默认用户名
+			if (document.cookie.indexOf("USERNAME=") == -1) {
+				// 未设置过用户名才初始化默认用户名
+				document.cookie = "USERNAME=" + "默认-" + new Date().getMinutes();
+				$("#userName").val("默认-" + new Date().getMinutes());
+			} else {
+				// 已存在用户名cookie，则设置到用户名框
+				var v_start = document.cookie.indexOf("USERNAME=") + 9;
+				var v_end = document.cookie.indexOf(";", v_start);
+				if (v_end == -1) {
+					v_end = document.cookie.length;
+				}
+				$("#userName").val(document.cookie.substring(v_start, v_end));
+			}
+
+			// 链接hub
+			var ticker = $.connection.groupChatHub;
+			$.connection.hub.start();
+
+			// 接收服务端发送的消息
+			$.extend(ticker.client, {
+
+				// 接收聊天消息
+				publishMsg: function (data) {
+					$("#msg").append("<li><span class='p'>" + data.Name + ": </span>" + data.Msg + " <span class='time'>" + data.Time + "</span></li>");
+					$("#msg").parents("div")[0].scrollTop = $("#msg").parents("div")[0].scrollHeight;
+				},
+
+				// 接收在线人员，然后加入Select，以供单独聊天选中
+				publishUser: function (data) {
+					$("#count").text(data.length);
+					$("#users").empty();
+					$("#users").append("<option value='0'>所有人</option>");
+					for (var i = 0; i < data.length; i++) {
+						$("#users").append('<option value="' + data[i] + '">' + data[i] + '</option>');
+					}
+				}
+			});
+
+			// 点击发送消息
+			$("#btn-send").click(function () {
+				var msg = $("#txt-msg").val();
+				if (!msg) {
+					alert("请输入内容!");
+					return false;
+				}
+				$("#txt-msg").val('');
+
+				// 主动发送消息，传入发送给谁，和发送的内容
+				ticker.server.sendMsg($("#users").val(), msg);
+			});
+
+			// 设置用户名 存于cookie
+			$("#userName").blur(function () {
+				// 将用户名存于cookie，默认情况下，cookie 在浏览器关闭时删除：
+				document.cookie = "USERNAME=" + $(this).val();
+			});
+		});
+
+
+	</script>
+</head>
+<body>
+	<h2>
+		群聊系统(<span id="count">1</span>人在线)
+	</h2>
+
+	<div style="overflow:auto;height:300px;">
+		<ul id="msg"></ul>
+	</div>
+
+	<select id="users" class="form-control" style="max-width:150px;">
+		<option value="0">所有人</option>
+	</select>
+
+	<input type="text" onkeydown="if (event.keyCode == 13) { $('#btn-send').click(); }" class="form-control" id="txt-msg" placeholder="内容" style="max-height:400px;" />
+	<br />
+	用户名:<input type="text" id="userName" />
+	<br />
+	<button type="button" id="btn-send">发送</button>
+</body>
+</html>

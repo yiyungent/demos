@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<!-- CCL -->
+	<link href="dist/css/style.css" rel="stylesheet" />
+	<script src="dist/CommentCoreLibrary.js"></script>
+	<!-- SignalR -->
+	<script src="Scripts/jquery-1.6.4.js"></script>
+	<script src="Scripts/jquery.signalR-2.3.0.js"></script>
+	<script src="signalr/hubs"></script>
+	<!-- My Custom -->
+	<link href="css/myStyle.css" rel="stylesheet" />
+	<script src="js/myJs.js"></script>
+</head>
+<body>
+	<!-- CommentCoreLibrary 的基础 DOM 结构。这个结构也可以动态生成，只要 class 设置正确即可 -->
+	<div id="my-player" class="abp" style="width:100%; height:300px; background:#000;">
+		<div id="my-comment-stage" class="container"></div>
+	</div>
+
+	<div id="control-board">
+		<button id="btnTimer">启用/重置 定时器来告知播放器目前的播放位置</button><span id="playTimePos">0</span>
+		<br />
+		弹幕:<input type="text" id="text-danmu" value="" /><br />
+		颜色:<input type="color" id="color-danmu" value="" /><br />
+		弹幕模式:<input type="text" id="mode-danmu" value="1" /><br />
+		<input type="button" id="btnInsert" value="插入弹幕" /><br />
+		<input type="button" id="btnSend" value="发送即时弹幕" />
+	</div>
+</body>
+</html>

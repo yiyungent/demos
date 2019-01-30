@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<script src="Scripts/jquery-1.10.2.js"></script>
+	<script src="Scripts/jquery.signalR-2.1.2.js"></script>
+	<!-- 这里是虚拟目录，也就是你在OWIN Startup中注册的地址 -->
+	<script src="signalr/hubs"></script>
+</head>
+<body>
+	<div>
+		<div>名称：<p id="userName"></p></div>
+		房间名：<input type="text" id="roomName" value="ceshi" />
+		<button id="createRoom">创建房间</button>
+	</div>
+	<div style="float:left;border:double">
+		<div>房间列表</div><ul id="roomList"></ul>
+	</div>
+	<div id="rooms"></div>
+	<script type="text/javascript">
+		var chat;
+		var roomCount = 0;
+		$(function () {
+			chat = $.connection.groupHub;
+
+			// 供服务端调用的showMessage方法
+			chat.client.showMessage = function (message) {
+				alert(message);
+			}
+
+			// 供服务端调用的客户端sendMessage方法
+			chat.client.sendMessage = function (roomName, message) {
+				//debugger
+				$("#" + roomName).find("ul").each(function () {
+					$(this).append('<li>' + message + '</li>');
+				});
+			}
+
+			// 供服务端调用的退出房间方法
+			chat.client.removeRoom = function (data) {
+				alert(data);
+			}
+
+			// 供服务端调用的更新房间列表的方法
+			chat.client.getRoomList = function (data) {
+				if (data) {
+					var jsonData = $.parseJSON(data);
+					$("#roomList").html(" ");
+					for (var i = 0; i < jsonData.length; i++) {
+						var html = '<li>房间名：' + jsonData[i] + '<button roomName="' + jsonData[i] + '" onclick="addRoom(this)">加入</button></li>';
+						$("#roomList").append(html);
+					}
+				}
+			}
+
+			// 供服务端调用的加入房间的方法
+			chat.client.addRoom = function (roomName) {
+				var html = '<div style="float:left;margin-left:30px;border:double" id="' + roomName + '" roomName="' + roomName + '"><button onclick="removeRoom(this)">退出房间</button>' + roomName + '房间聊天记录如下：<ul></ul><input type="text" /><button onclick="send(this)">发送</button></div>';
+				$("#rooms").append(html);
+			}
+
+			// 获取用户名称
+			$("#userName").html(prompt('请输入您的名称:', ''));
+
+			$.connection.hub.start().done(function () {
+				$("#createRoom").click(function () {
+					if (roomCount < 2) {
+						// 调用服务端方法
+						chat.server.createRoom($("#roomName").val());
+					} else {
+						alert('聊天窗口只允许有2个');
+					}
+				});
+			});
+
+		});
+
+		// 发送消息的方法
+		function send(btn) {
+			var message = $(btn).prev().val();
+			var room = $(btn).parent();
+			var userName = $("#userName").html();
+			message = userName + ":" + message;
+			var roomName = $(room).attr("roomName");
+			chat.server.sendMsg(roomName, message);
+		}
+
+		// 退出房间
+		function removeRoom(btn) {
+			var room = $(btn).parent();
+			var roomName = $(room).attr("roomName");
+			chat.server.exitRoom(roomName);
+		}
+
+		// 加入房间
+		function addRoom(roomName) {
+			var data = $(roomName).attr("roomName");
+			chat.server.addRoom(data);
+		}
+	</script>
+</body>
+</html>

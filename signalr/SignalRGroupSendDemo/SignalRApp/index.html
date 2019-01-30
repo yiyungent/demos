@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<script src="Scripts/jquery-1.10.2.js"></script>
+	<script src="Scripts/jquery.signalR-2.3.0.js"></script>
+	<script src="/signalr/hubs" type="text/javascript"></script><!--这是一个由SignalR 处理的路径-->
+</head>
+<body>
+	<div>
+		<span>请选择要加入的组名：</span>
+		<select id="addCityGroup">
+			<option>北京</option>
+			<option>上海</option>
+			<option>深圳</option>
+			<option>广州</option>
+		</select>
+		<input type="button" id="btnAddGroup" value="加入组" /><div style="padding-bottom:50px"></div>
+
+		<div>以下是向选定的组发送消息内容：</div>
+		<span>请选择要发送消息的组名：</span>
+		<select id="sendCityGroup">
+			<option>北京</option>
+			<option>上海</option>
+			<option>深圳</option>
+			<option>广州</option>
+		</select>
+		<input type="text" id="msg" value="" />
+		<input type="button" id="btnSendMsg" value="发送消息" />
+	</div>
+	<script type="text/javascript">
+		$(function () {
+			// 注意：这一步一定要在$.connection.hub.start()之前执行
+			// 告诉服务端 MyHub类中的OnMessage()方法对应的客户端方法为此
+			// 服务端的OnMessage()调用客户端的此方法
+			$.connection.myHub.client.onMessage = ReceiveMsg;
+
+			function ReceiveMsg(msg) {
+				alert("收到服务端发来的消息：" + msg);
+			}
+
+			$.connection.hub.start().done(function () {
+				alert("连接MyHub成功");
+			}).fail(function () { alert("连接MyHub失败"); });
+
+			// 加入组
+			$("#btnAddGroup").click(function () {
+				var groupName = $("#addCityGroup option:selected").text();
+				// 这个页面是客户端，运行index.html页面的时候，会执行这个script代码块
+				// 点击时调用服务端MyHub类中的AddGroup方法，并向其传参
+				$.connection.myHub.server.addGroup(groupName);
+			});
+
+			// 向指定组发送消息
+			$("#btnSendMsg").click(function () {
+				// 注意：不管项目中声明的SignalR集线器类中的方法名字的首字母是大写还是小写，这的名字都必须是小写开头
+				// 例如：我的SignalR集线器类的名字叫MyHub.cs，它里面声明了一个SendMessage方法，这里必须写成sendMessage
+				// $.connnection.myHub.server.sendMessage("小米", "我上市啦"); // 向服务端发送消息
+				var groupName = $("#sendCityGroup option:selected").text();
+				var msg = $("#msg").val();
+
+				// 向指定的组中发送消息
+				$.connection.myHub.server.sendGroupMsg(groupName, msg);
+			});
+		});
+	</script>
+</body>
+</html>
