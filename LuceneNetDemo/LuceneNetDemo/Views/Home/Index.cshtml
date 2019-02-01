@@ -1,0 +1,42 @@
+﻿
+@{
+	Layout = null;
+	ViewBag.Title = "一元分词";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+	<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+	<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+</head>
+<body>
+	@using (Ajax.BeginForm("Index", "Home", new AjaxOptions
+	{
+		InsertionMode = InsertionMode.Replace,
+		HttpMethod = "post",
+		OnFailure = "fail",
+		OnSuccess = "success",
+		LoadingElementId = "loadingMsg"
+	}, new { id = "ajaxForm" }))
+	{
+		<div>
+			输入内容：@Html.TextArea("txtBody")<input type="submit" id="btnOne" value="一元分词" />
+			结果：@Html.TextArea("txtResult")
+		</div>
+	}
+	<div id="loadingMsg" style="display: none;">加载ing...</div>
+	<div id="msgBox" style="color: aqua;"></div>
+	<script>
+		function fail(msg) {
+			$('#msgBox').text('查询失败，失败信息：' + msg.responseText);
+		}
+		function success(msg) {
+			$('#txtResult').text(msg);
+		}
+	</script>
+</body>
+</html>

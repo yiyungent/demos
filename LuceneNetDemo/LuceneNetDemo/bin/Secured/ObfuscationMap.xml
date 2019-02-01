@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AgileDotNet Version="6.4.0.31" Time="2/1/2019 16:24:10">
+  <Module N="LuceneNetDemo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <Type N="&lt;Module&gt;" />
+    <Type N="&lt;&gt;f__AnonymousType0`3">
+      <Method N="Void .ctor(!0 controller, !1 action, !2 id)" />
+      <Method N="Boolean Equals(Object value)" />
+      <Method N="Int32 GetHashCode()" />
+      <Method N="String ToString()" />
+    </Type>
+    <Type N="LuceneNetDemo.RouteConfig">
+      <Method N="Void RegisterRoutes(System.Web.Routing.RouteCollection routes)" />
+      <Method N="Void .ctor()" />
+    </Type>
+    <Type N="LuceneNetDemo.CJKAnalyzer">
+      <Method N="Void .ctor()" />
+      <Method N="Void .ctor(String[] stopWords)" />
+      <Method N="Lucene.Net.Analysis.TokenStream TokenStream(String fieldName, System.IO.TextReader reader)" />
+      <Method N="Void .cctor()" />
+      <Field N="stopTable" ON="oRM=" />
+    </Type>
+    <Type N="LuceneNetDemo.CJKTokenizer">
+      <Method N="Void .ctor(System.IO.TextReader reader)" />
+      <Method N="Lucene.Net.Analysis.Token Next()" />
+      <Method N="Boolean IsAscii(Char c)" />
+      <Method N="Boolean IsHALFWIDTH_AND_FULLWIDTH_FORMS(Char c)" />
+      <Method N="Void .cctor()" />
+      <Field N="MAX_WORD_LEN" ON="ohM=" />
+      <Field N="IO_BUFFER_SIZE" ON="oxM=" />
+      <Field N="offset" ON="pBM=" />
+      <Field N="bufferIndex" ON="pRM=" />
+      <Field N="dataLen" ON="phM=" />
+      <Field N="buffer" ON="pxM=" />
+      <Field N="ioBuffer" ON="qBM=" />
+      <Field N="tokenType" ON="qRM=" />
+      <Field N="preIsTokened" ON="qhM=" />
+    </Type>
+    <Type N="LuceneNetDemo.MvcApplication">
+      <Method N="Void Application_Start()" />
+      <Method N="Void .ctor()" />
+    </Type>
+    <Type N="LuceneNetDemo.Controllers.HomeController">
+      <Method N="System.Web.Mvc.ActionResult Index()" />
+      <Method N="System.Web.Mvc.ActionResult Index(String txtBody)" />
+      <Method N="String AnalyzerResult(String txtBody, Lucene.Net.Analysis.Analyzer analyzer)" ON="qxM=" />
+      <Method N="System.Web.Mvc.ActionResult TwoAnalyzer()" />
+      <Method N="System.Web.Mvc.ActionResult TwoAnalyzer(String txtBody)" />
+      <Method N="System.Web.Mvc.ActionResult PanGuAnalyzer()" />
+      <Method N="System.Web.Mvc.ActionResult PanGuAnalyzer(String txtBody)" />
+      <Method N="Void .ctor()" />
+    </Type>
+    <Type N="SecureTeam.Attributes.ObfuscatedByAgileDotNetAttribute">
+      <Method N="Void .ctor()" />
+    </Type>
+  </Module>
+</AgileDotNet>
