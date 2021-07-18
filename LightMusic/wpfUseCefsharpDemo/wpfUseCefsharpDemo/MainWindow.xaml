@@ -1,0 +1,12 @@
+﻿<Window x:Class="wpfUseCefsharpDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpfUseCefsharpDemo"
+        mc:Ignorable="d"
+        Title="绚丽彩虹播放器 for Desktop" Height="265" Width="376" Loaded="Window_Loaded" MinWidth="376" MinHeight="220" MaxWidth="376" WindowStartupLocation="CenterScreen" Topmost="True">
+    <Grid>
+
+    </Grid>
+</Window>
