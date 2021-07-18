@@ -1,0 +1,23 @@
+﻿<Window x:Class="SocketDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SocketDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800">
+    <Grid Margin="0,0,3.333,-1.333" RenderTransformOrigin="0.283,0.465">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="471*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="319*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="BtnListen" Content="开始监听" HorizontalAlignment="Left" Margin="13.333,334,0,0" VerticalAlignment="Top" Width="194" Height="57" Click="BtnListen_Click" Grid.Column="2"/>
+        <TextBlock x:Name="TextBlockOfReceiveMsg" HorizontalAlignment="Left" Margin="37,33,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="120" Width="713" Grid.ColumnSpan="3"/>
+        <ComboBox x:Name="CBoxOfSocketClientCon" HorizontalAlignment="Left" Margin="37,334,0,0" VerticalAlignment="Top" Width="221" Height="41" IsEditable="True"/>
+        <TextBlock x:Name="TextBlockOfTipMsg" HorizontalAlignment="Left" Margin="10,237,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="70" Width="773" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="TextBoxOfSendMsg" HorizontalAlignment="Left" Height="88" Margin="37,458,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="400"/>
+        <Button x:Name="BtnSendMsg" Content="发送" Grid.Column="2" HorizontalAlignment="Left" Margin="59.333,458,0,0" VerticalAlignment="Top" Width="194" Height="88" Click="BtnSendMsg_Click"/>
+
+    </Grid>
+</Window>

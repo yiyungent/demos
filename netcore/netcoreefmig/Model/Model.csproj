@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- 参考：https://blog.csdn.net/sd7o95o/article/details/78771269 -->
+  
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <!-- 下行解决：he specified framework version '2.0' could not be parsed
+The specified framework 'Microsoft.NETCore.App', version '2.0' was not found.
+- Check application dependencies and target a framework version installed at:
+\
+- Alternatively, install the framework version '2.0'. -->
+    <RuntimeFrameworkVersion>2.0.3</RuntimeFrameworkVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- 注意改为2.0 是为解决此问题：http://www.mamicode.com/info-detail-2334263.html -->
+    <!-- Void Microsoft.EntityFrameworkCore.Storage.Internal.RelationalParameterBuilder..ctor(Microsoft.EntityFrameworkCore.Storage.IRelationalTypeMapper) -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.3" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.12" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "phantomjsDemo", "phantomjsDemo\phantomjsDemo.csproj", "{C5593CD1-ED66-4C38-BF66-B58E90B8CC42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExecuteCMD", "ExecuteCMD\ExecuteCMD.csproj", "{67FEFDC4-7C3F-45D9-96CC-1B6A37B3F299}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CutPicWithPhantomjs", "CutPicWithPhantomjs\CutPicWithPhantomjs.csproj", "{2CCC2D85-1510-4AAF-8F5F-32D5FEB71637}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumAndPhantomJS", "SeleniumAndPhantomJS\SeleniumAndPhantomJS.csproj", "{C846110E-44AD-4A9A-B10E-7ADC1D4F5785}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsePhantomJSCSharpWrapper", "UsePhantomJSCSharpWrapper\UsePhantomJSCSharpWrapper.csproj", "{4661D214-B2BA-473E-9AE1-D5D0C6E5C067}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5593CD1-ED66-4C38-BF66-B58E90B8CC42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5593CD1-ED66-4C38-BF66-B58E90B8CC42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5593CD1-ED66-4C38-BF66-B58E90B8CC42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5593CD1-ED66-4C38-BF66-B58E90B8CC42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67FEFDC4-7C3F-45D9-96CC-1B6A37B3F299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67FEFDC4-7C3F-45D9-96CC-1B6A37B3F299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67FEFDC4-7C3F-45D9-96CC-1B6A37B3F299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67FEFDC4-7C3F-45D9-96CC-1B6A37B3F299}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CCC2D85-1510-4AAF-8F5F-32D5FEB71637}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CCC2D85-1510-4AAF-8F5F-32D5FEB71637}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CCC2D85-1510-4AAF-8F5F-32D5FEB71637}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CCC2D85-1510-4AAF-8F5F-32D5FEB71637}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C846110E-44AD-4A9A-B10E-7ADC1D4F5785}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C846110E-44AD-4A9A-B10E-7ADC1D4F5785}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C846110E-44AD-4A9A-B10E-7ADC1D4F5785}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C846110E-44AD-4A9A-B10E-7ADC1D4F5785}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4661D214-B2BA-473E-9AE1-D5D0C6E5C067}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4661D214-B2BA-473E-9AE1-D5D0C6E5C067}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4661D214-B2BA-473E-9AE1-D5D0C6E5C067}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4661D214-B2BA-473E-9AE1-D5D0C6E5C067}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CD899F34-C255-45BB-8C21-D56B4B567017}
+	EndGlobalSection
+EndGlobal

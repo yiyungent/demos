@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2047
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aspnetcore2.1UseMySqlEFCore", "aspnetcore2.1UseMySqlEFCore\aspnetcore2.1UseMySqlEFCore.csproj", "{382ADFA4-469B-4EE9-93D7-1955727C2915}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{382ADFA4-469B-4EE9-93D7-1955727C2915}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{382ADFA4-469B-4EE9-93D7-1955727C2915}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{382ADFA4-469B-4EE9-93D7-1955727C2915}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{382ADFA4-469B-4EE9-93D7-1955727C2915}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1238DD34-4AE7-4DB2-BA92-6CDADC636254}
+	EndGlobalSection
+EndGlobal
